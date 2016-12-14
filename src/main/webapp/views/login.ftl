@@ -8,13 +8,13 @@
 		<link rel="stylesheet" href="/css/bootstrap-responsive.min.css" />
         <link rel="stylesheet" href="/css/matrix-login.css" />
         <link href="/font-awesome/css/font-awesome.css" rel="stylesheet" />
-		<link href='http://fonts.useso.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+		<!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>-->
 
     </head>
     <body>
         <div id="loginbox">            
-            <form id="loginform" class="form-vertical" action="http://themedesigner.in/demo/matrix-admin/index.html">
-				 <div class="control-group normal_text"> <h3><img src="img/logo.png" alt="用户登录" /></h3></div>
+            <form id="loginform" class="form-vertical" action="/login/home">
+				 <div class="control-group normal_text"> <h3><img src="/img/logo.png" alt="用户登录" /></h3></div>
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-actions">
                     <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">忘记密码?</a></span>
-                    <span class="pull-right"><a type="submit" href="index.html" class="btn btn-success" /> 登录</a></span>
+                    <span class="pull-right"><a type="submit"  class="btn btn-success" /> 登录</a></span>
                 </div>
             </form>
             <form id="recoverform" action="#" class="form-vertical">

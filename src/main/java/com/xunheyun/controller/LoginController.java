@@ -10,12 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author HAITAO
  */
 @Controller
-@RequestMapping(value="/user")
+@RequestMapping(value="/login")
 public class LoginController {
 
 
+	@RequestMapping(value="/page")
+	public String page(){
+		return "login";
+	}
+	
 	@RequestMapping(value="/login")
-	public void login(){
-		
+	public String login(){
+		return "login";
 	}
 }

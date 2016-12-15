@@ -1,8 +1,9 @@
 package com.xunheyun.service;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
-import com.sun.javafx.collections.MappingChange.Map;
 
 @Service
 public interface IUserService {

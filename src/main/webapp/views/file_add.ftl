@@ -7,18 +7,25 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="/css/bootstrap-responsive.min.css" />
-		<link rel="stylesheet" href="/css/fullcalendar.css" />
+		<link rel="stylesheet" href="/css/colorpicker.css" />
+		<link rel="stylesheet" href="/css/datepicker.css" />
+		<link rel="stylesheet" href="/css/uniform.css" />
+		<link rel="stylesheet" href="/css/select2.css" />
 		<link rel="stylesheet" href="/css/matrix-style.css" />
 		<link rel="stylesheet" href="/css/matrix-media.css" />
+		<link rel="stylesheet" href="/css/bootstrap-wysihtml5.css" />
 		<link href="/font-awesome/css/font-awesome.css" rel="stylesheet" />
-		<link rel="stylesheet" href="/css/jquery.gritter.css" />
 		<!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>-->
 	</head>
+
 	<body>
+
 		<!--Header-part-->
 		<div id="header">
 			<h1><a href="dashboard.html">Matrix Admin</a></h1>
 		</div>
+		<!--close-Header-part-->
+
 		<!--top-Header-menu-->
 		<div id="user-nav" class="navbar navbar-inverse">
 			<ul class="nav">
@@ -66,57 +73,72 @@
 				</li>
 			</ul>
 		</div>
-		<!--close-top-Header-menu-->
+
 		<!--start-top-serch-->
 		<div id="search">
 			<input type="text" placeholder="Search here..." />
 			<button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
 		</div>
 		<!--close-top-serch-->
+
 		<!--sidebar-menu-->
+
 		<div id="sidebar">
-			<a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+			<a href="#" class="visible-phone"><i class="icon icon-list"></i>Forms</a>
 			<ul>
-				<li>
-					<a href="/project/list"><i class="icon icon-home"></i> <span>项目管理</span></a>
+				<li class="active">
+					<a href="i#"><i class="icon icon-home"></i> <span>项目管理</span></a>
 				</li>
 				<li>
-					<a href="charts.html"><i class="icon icon-signal"></i> <span>文件管理</span></a>
+					<a href="charts.html"><i class="icon icon-signal"></i> <span>Charts &amp; graphs</span></a>
+				</li>
+				<li>
+					<a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a>
+				</li>
+				<li>
+					<a href="tables.html"><i class="icon icon-th"></i> <span>Tables</span></a>
+				</li>
+				<li>
+					<a href="grid.html"><i class="icon icon-fullscreen"></i> <span>Full width</span></a>
 				</li>
 			</ul>
 		</div>
+
+		<!--close-left-menu-stats-sidebar-->
+
 		<div id="content">
 			<div id="content-header">
 				<div id="breadcrumb">
-					<a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+					<a href="/login/home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+					<a href="#" class="current">添加项目</a>
 				</div>
+				<h1>添加项目</h1>
 			</div>
 			<div class="container-fluid">
 				<hr>
-				<a class="btn btn-success" href="/project/addpage">添加项目</a>
 				<div class="row-fluid">
-					<div class="span12">
+					<div class="span6">
 						<div class="widget-box">
-							<div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
-								<h5>项目列表</h5>
+							<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
 							</div>
 							<div class="widget-content nopadding">
-								<table class="table table-bordered table-striped">
-									<thead>
-										<tr>
-											<th>项目名称</th>
-											<th>创建时间</th>
-											<th>项目描述</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr class="odd gradeX">
-											<td>Trident</td>
-											<td>Internet Explorer 4.0</td>
-											<td>Win 95+</td>
-										</tr>
-									</tbody>
-								</table>
+								<form action="/file/add" method="post" class="form-horizontal">
+									<div class="control-group">
+										<label class="control-label">文件名称 :</label>
+										<div class="controls">
+											<input type="text" class="span11" placeholder="First name" name="file_name" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">文件描述 :</label>
+										<div class="controls">
+											<input type="text" class="span11" placeholder="${project_id}" name="project_id" />
+										</div>
+									</div>
+									<div class="form-actions">
+										<button type="submit" class="btn btn-success">Save</button>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -124,63 +146,29 @@
 			</div>
 		</div>
 		</div>
-		</div>
-		<!--end-main-container-part-->
-
 		<!--Footer-part-->
 		<div class="row-fluid">
 			<div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by
 				<a href="http://themedesigner.in/">Themedesigner.in</a>
 			</div>
 		</div>
-
 		<!--end-Footer-part-->
-
-		<script src="/js/excanvas.min.js"></script>
 		<script src="/js/jquery.min.js"></script>
 		<script src="/js/jquery.ui.custom.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/jquery.flot.min.js"></script>
-		<script src="/js/jquery.flot.resize.min.js"></script>
-		<script src="/js/jquery.peity.min.js"></script>
-		<script src="/js/fullcalendar.min.js"></script>
-		<script src="/js/matrix.js"></script>
-		<script src="/js/matrix.dashboard.js"></script>
-		<script src="/js/jquery.gritter.min.js"></script>
-		<script src="/js/matrix.interface.js"></script>
-		<script src="/js/matrix.chat.js"></script>
-		<script src="/js/jquery.validate.js"></script>
-		<script src="/js/matrix.form_validation.js"></script>
-		<script src="/js/jquery.wizard.js"></script>
+		<script src="/js/bootstrap-colorpicker.js"></script>
+		<script src="/js/bootstrap-datepicker.js"></script>
+		<script src="/js/jquery.toggle.buttons.html"></script>
+		<script src="/js/masked.js"></script>
 		<script src="/js/jquery.uniform.js"></script>
 		<script src="/js/select2.min.js"></script>
-		<script src="/js/matrix.popover.js"></script>
-		<script src="/js/jquery.dataTables.min.js"></script>
-		<script src="/js/matrix.tables.js"></script>
-
-		<script type="text/javascript">
-			// This function is called from the pop-up menus to transfer to
-			// a different page. Ignore if the value returned is a null string:
-			function goPage(newURL) {
-				// if url is empty, skip the menu dividers and reset the menu selection to default
-				if(newURL != "") {
-					// if url is "-", it is this page -- reset the menu:
-					if(newURL == "-") {
-						resetMenu();
-					}
-					// else, send page to designated URL            
-					else {
-						document.location.href = newURL;
-					}
-				}
-			}
-
-			// resets the menu selection upon entry to this page:
-			function resetMenu() {
-				document.gomenu.selector.selectedIndex = 2;
-			}
-			
-			
+		<script src="/js/matrix.js"></script>
+		<script src="/js/matrix.form_common.js"></script>
+		<script src="/js/wysihtml5-0.3.0.js"></script>
+		<script src="/js/jquery.peity.min.js"></script>
+		<script src="/js/bootstrap-wysihtml5.js"></script>
+		<script>
+			$('.textarea_editor').wysihtml5();
 		</script>
 	</body>
 

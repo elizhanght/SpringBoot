@@ -18,14 +18,14 @@
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lg"><i class="icon-user"></i></span><input type="text" placeholder="用户名" />
+                            <span class="add-on bg_lg"><i class="icon-user"></i></span><input name="user_name" type="text" placeholder="用户名" />
                         </div>
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password" placeholder="密码" />
+                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input name="pass_word" type="password" placeholder="密码" />
                         </div>
                     </div>
                 </div>

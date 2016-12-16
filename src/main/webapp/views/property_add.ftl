@@ -17,15 +17,12 @@
 		<link href="/font-awesome/css/font-awesome.css" rel="stylesheet" />
 		<!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>-->
 	</head>
-
 	<body>
-
 		<!--Header-part-->
 		<div id="header">
 			<h1><a href="dashboard.html">Matrix Admin</a></h1>
 		</div>
 		<!--close-Header-part-->
-
 		<!--top-Header-menu-->
 		<div id="user-nav" class="navbar navbar-inverse">
 			<ul class="nav">
@@ -73,16 +70,13 @@
 				</li>
 			</ul>
 		</div>
-
 		<!--start-top-serch-->
 		<div id="search">
 			<input type="text" placeholder="Search here..." />
 			<button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
 		</div>
 		<!--close-top-serch-->
-
 		<!--sidebar-menu-->
-
 		<div id="sidebar">
 			<a href="#" class="visible-phone"><i class="icon icon-list"></i>Forms</a>
 			<ul>
@@ -91,16 +85,14 @@
 				</li>
 			</ul>
 		</div>
-
 		<!--close-left-menu-stats-sidebar-->
-
 		<div id="content">
 			<div id="content-header">
 				<div id="breadcrumb">
 					<a href="/login/home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-					<a href="#" class="current">添加项目</a>
+					<a href="#" class="current">添加属性</a>
 				</div>
-				<h1>创建项目</h1>
+				<h1>添加属性</h1>
 			</div>
 			<div class="container-fluid">
 				<hr>
@@ -110,17 +102,23 @@
 							<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
 							</div>
 							<div class="widget-content nopadding">
-								<form action="/project/add" method="post" class="form-horizontal">
+								<form action="/property/add" method="post" class="form-horizontal">
 									<div class="control-group">
-										<label class="control-label">项目名称 :</label>
+										<label class="control-label">属性名称 :</label>
 										<div class="controls">
-											<input type="text" class="span11" placeholder="项目名称" name="project_name" />
+											<input type="text" class="span11" placeholder="First name" name="pro_key" />
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label">项目描述 :</label>
+										<label class="control-label">属性值 :</label>
 										<div class="controls">
-											<input type="text" class="span11" placeholder="项目描述" name="project_desc" />
+											<input type="text" class="span11" placeholder="Last name" name="pro_value" />
+										</div>
+									</div>
+									<div class="control-group" style="display: none;">
+										<label class="control-label">属性值 :</label>
+										<div class="controls">
+											<input type="text" class="span11" placeholder="Last name" name="file_id" value="${file_id}" />
 										</div>
 									</div>
 									<div class="form-actions">

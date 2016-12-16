@@ -1,5 +1,4 @@
 /**
- * 
  */
 package com.xunheyun.vo;
 
@@ -11,6 +10,7 @@ public class File {
 	private int file_id;
 	private String file_name;
 	private int project_id;
+	private String file_desc;
 	
 	
 	public String getFile_name() {
@@ -30,6 +30,12 @@ public class File {
 	}
 	public void setFile_id(int file_id) {
 		this.file_id = file_id;
+	}
+	public String getFile_desc() {
+		return file_desc;
+	}
+	public void setFile_desc(String file_desc) {
+		this.file_desc = file_desc;
 	}
 	
 	

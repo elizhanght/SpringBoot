@@ -26,7 +26,6 @@ public class ProjectController {
 //		int userId = Integer.valueOf(request.getParameter("userId"));
 		
 		List<Project> list = projectService.list(0);
-		
 		request.setAttribute("projects", list);
 		
 		return "project_list";
@@ -34,7 +33,8 @@ public class ProjectController {
 	
 	@RequestMapping(value="/addpage")
 	public String projectAddPage(HttpServletRequest request){
-		return "form-common";
+		
+		return "project_add";
 	}
 	
 	@RequestMapping(value="/add")
@@ -42,18 +42,46 @@ public class ProjectController {
 		
 		projectService.addProject(project);
 		
-		return "/login/home";
+		List<Project> list = projectService.list(0);
+		request.setAttribute("projects", list);
+		
+		return "project_list";
 	}
 	
 	@RequestMapping(value="/delete")
 	public String projectDelete(HttpServletRequest request){
 		
-		return "tables";
+		int project_id = Integer.valueOf(request.getParameter("project_id"));
+		
+		projectService.deleteProject(project_id);
+		
+		List<Project> list = projectService.list(0);
+		
+		request.setAttribute("projects", list);
+		
+		return "project_list";
+	}
+	
+	@RequestMapping(value="/editpage")
+	public String projectEditPage(HttpServletRequest request){
+		
+		int project_id = Integer.valueOf(request.getParameter("project_id"));
+		
+		Project project = projectService.getProject(project_id);
+		
+		request.setAttribute("project", project);
+		
+		return "project_edit";
 	}
 	
 	@RequestMapping(value="/edit")
-	public String projectEdit(HttpServletRequest request){
+	public String projectEdit(HttpServletRequest request,@ModelAttribute("form") Project project){
 		
-		return "tables";
+		projectService.updateProject(project);
+		
+		List<Project> list = projectService.list(0);
+		request.setAttribute("projects", list);
+		
+		return "project_list";
 	}
 }

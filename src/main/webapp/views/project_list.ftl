@@ -83,23 +83,14 @@
 			<a href="#" class="visible-phone"><i class="icon icon-th"></i>Tables</a>
 			<ul>
 				<li class="active">
-					<a href="javascript(;)"><i class="icon icon-home"></i> <span>项目管理</span></a>
-				</li>
-				<li>
-					<a href="charts.html"><i class="icon icon-signal"></i> <span>文件管理</span></a>
-				</li>
-				<li>
-					<a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a>
-				</li>
-				<li>
-					<a href="tables.html"><i class="icon icon-th"></i> <span>Tables</span></a>
+					<a href="#"><i class="icon icon-home"></i> <span>项目管理</span></a>
 				</li>
 			</ul>
 		</div>
 		<div id="content">
 			<div id="content-header">
 				<div id="breadcrumb">
-					<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+					<a href="/login/home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
 					<a href="#" class="current">项目列表</a>
 				</div>
 				<!--<h1>Tables</h1>-->
@@ -130,8 +121,8 @@
 												<td>${project.project_name}</td>
 												<td>${project.project_desc}</td>
 												<td>
-													<a class="btn btn-success btn-mini" href="/project/editpage">编辑</a>
-													<a class="btn btn-danger  btn-mini" href="/project/delete">删除</a>
+													<a class="btn btn-success btn-mini" href="/project/editpage?project_id=${project.project_id}">编辑</a>
+													<a class="btn btn-danger  btn-mini" href="/project/delete?project_id=${project.project_id}">删除</a>
 													<a class="btn btn-success  btn-mini" href="/file/list?project_id=${project.project_id}">文件列表</a>
 												</td>
 											</tr>

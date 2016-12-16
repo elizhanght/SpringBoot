@@ -85,21 +85,13 @@
 				<li class="active">
 					<a href="/project/list"><i class="icon icon-home"></i> <span>项目管理</span></a>
 				</li>
-				<li>
-					<a href="charts.html"><i class="icon icon-signal"></i> <span>文件管理</span></a>
-				</li>
-				<li>
-					<a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a>
-				</li>
-				<li>
-					<a href="tables.html"><i class="icon icon-th"></i> <span>Tables</span></a>
-				</li>
 			</ul>
 		</div>
 		<div id="content">
 			<div id="content-header">
 				<div id="breadcrumb">
-					<a href="/project/list" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+					<a href="/login/home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+					<a href="/project/list" title="Go to Home" class="tip-bottom"> 项目列表</a>
 					<a href="#" class="current">文件列表</a>
 				</div>
 				<!--<h1>Tables</h1>-->
@@ -128,11 +120,11 @@
 											<tr class="odd gradeX">
 												<td>${file.file_name}</td>
 												<td>${file.file_name}</td>
-												<td>${file.file_name}</td>
+												<td>${file.file_desc}</td>
 												<td>
 													<a class="btn btn-success btn-mini" href="/project/editpage">编辑</a>
 													<a class="btn btn-danger  btn-mini" href="/project/delete">删除</a>
-													<a class="btn btn-success  btn-mini" href="/file/list?file_id=${file.file_id}">属性列表</a>
+													<a class="btn btn-success  btn-mini" href="/property/list?file_id=${file.file_id}&project_id=${project_id}">属性列表</a>
 												</td>
 											</tr>
 										</#list>

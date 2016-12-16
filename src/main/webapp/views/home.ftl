@@ -80,9 +80,6 @@
 				<li>
 					<a href="/project/list"><i class="icon icon-home"></i> <span>项目管理</span></a>
 				</li>
-				<li>
-					<a href="charts.html"><i class="icon icon-signal"></i> <span>文件管理</span></a>
-				</li>
 			</ul>
 		</div>
 		<div id="content">

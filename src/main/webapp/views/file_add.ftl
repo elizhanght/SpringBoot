@@ -87,19 +87,7 @@
 			<a href="#" class="visible-phone"><i class="icon icon-list"></i>Forms</a>
 			<ul>
 				<li class="active">
-					<a href="i#"><i class="icon icon-home"></i> <span>项目管理</span></a>
-				</li>
-				<li>
-					<a href="charts.html"><i class="icon icon-signal"></i> <span>Charts &amp; graphs</span></a>
-				</li>
-				<li>
-					<a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a>
-				</li>
-				<li>
-					<a href="tables.html"><i class="icon icon-th"></i> <span>Tables</span></a>
-				</li>
-				<li>
-					<a href="grid.html"><i class="icon icon-fullscreen"></i> <span>Full width</span></a>
+					<a href="/project/list"><i class="icon icon-home"></i> <span>项目管理</span></a>
 				</li>
 			</ul>
 		</div>
@@ -110,9 +98,9 @@
 			<div id="content-header">
 				<div id="breadcrumb">
 					<a href="/login/home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-					<a href="#" class="current">添加项目</a>
+					<a href="#" class="current">添加文件</a>
 				</div>
-				<h1>添加项目</h1>
+				<h1>添加文件</h1>
 			</div>
 			<div class="container-fluid">
 				<hr>
@@ -129,10 +117,16 @@
 											<input type="text" class="span11" placeholder="First name" name="file_name" />
 										</div>
 									</div>
+									<div class="control-group" style="display:none;">
+										<label class="control-label">项目ID :</label>
+										<div class="controls">
+											<input type="text" class="span11" value="${project_id}" name="project_id" />
+										</div>
+									</div>
 									<div class="control-group">
 										<label class="control-label">文件描述 :</label>
 										<div class="controls">
-											<input type="text" class="span11" placeholder="${project_id}" name="project_id" />
+											<input type="text" class="span11" placeholder="项目描述" name="project_id" />
 										</div>
 									</div>
 									<div class="form-actions">

@@ -7,15 +7,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="/css/bootstrap-responsive.min.css" />
-		<link rel="stylesheet" href="/css/colorpicker.css" />
-		<link rel="stylesheet" href="/css/datepicker.css" />
 		<link rel="stylesheet" href="/css/uniform.css" />
 		<link rel="stylesheet" href="/css/select2.css" />
 		<link rel="stylesheet" href="/css/matrix-style.css" />
 		<link rel="stylesheet" href="/css/matrix-media.css" />
-		<link rel="stylesheet" href="/css/bootstrap-wysihtml5.css" />
 		<link href="/font-awesome/css/font-awesome.css" rel="stylesheet" />
-		<!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>-->
 	</head>
 
 	<body>
@@ -84,80 +80,74 @@
 		<!--sidebar-menu-->
 
 		<div id="sidebar">
-			<a href="#" class="visible-phone"><i class="icon icon-list"></i>Forms</a>
+			<a href="#" class="visible-phone"><i class="icon icon-th"></i>Tables</a>
 			<ul>
 				<li class="active">
-					<a href="i#"><i class="icon icon-home"></i> <span>项目管理</span></a>
+					<a href="/project/list"><i class="icon icon-home"></i> <span>项目管理</span></a>
 				</li>
 			</ul>
 		</div>
-
-		<!--close-left-menu-stats-sidebar-->
-
 		<div id="content">
 			<div id="content-header">
 				<div id="breadcrumb">
 					<a href="/login/home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-					<a href="#" class="current">添加项目</a>
+					<a href="/project/list" title="Go to Home" > 项目列表</a>
+					<a href="/file/list?project_id=${project_id}" >文件列表</a>
+					<a href="#" class="current">属性列表</a>
 				</div>
-				<h1>创建项目</h1>
+				<!--<h1>Tables</h1>-->
 			</div>
 			<div class="container-fluid">
 				<hr>
+				<a class="btn btn-success" href="/property/addpage?file_id=${file_id}">添加属性</a>
 				<div class="row-fluid">
-					<div class="span6">
+					<div class="span12">
 						<div class="widget-box">
-							<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+							<div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
+								<h5>属性列表</h5>
 							</div>
 							<div class="widget-content nopadding">
-								<form action="/project/add" method="post" class="form-horizontal">
-									<div class="control-group">
-										<label class="control-label">项目名称 :</label>
-										<div class="controls">
-											<input type="text" class="span11" placeholder="项目名称" name="project_name" />
-										</div>
-									</div>
-									<div class="control-group">
-										<label class="control-label">项目描述 :</label>
-										<div class="controls">
-											<input type="text" class="span11" placeholder="项目描述" name="project_desc" />
-										</div>
-									</div>
-									<div class="form-actions">
-										<button type="submit" class="btn btn-success">Save</button>
-									</div>
-								</form>
+								<table class="table table-bordered table-striped">
+									<thead>
+										<tr>
+											<th>属性KEY</th>
+											<th>属性VALUE</th>
+											<th style="width: 200px;">操作</th>
+										</tr>
+									</thead>
+									<tbody>
+										<#list properties as property >
+											<tr class="odd gradeX">
+												<td>${property.pro_key}</td>
+												<td>${property.pro_value}</td>
+												<td>
+													<a class="btn btn-success btn-mini" href="/project/editpage">编辑</a>
+													<a class="btn btn-danger  btn-mini" href="/project/delete">删除</a>
+												</td>
+											</tr>
+										</#list>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		</div>
-		<!--Footer-part-->
-		<div class="row-fluid">
-			<div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by
-				<a href="http://themedesigner.in/">Themedesigner.in</a>
+			<!--Footer-part-->
+			<div class="row-fluid">
+				<div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by
+					<a href="http://themedesigner.in/">Themedesigner.in</a>
+				</div>
 			</div>
-		</div>
-		<!--end-Footer-part-->
-		<script src="/js/jquery.min.js"></script>
-		<script src="/js/jquery.ui.custom.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/bootstrap-colorpicker.js"></script>
-		<script src="/js/bootstrap-datepicker.js"></script>
-		<script src="/js/jquery.toggle.buttons.html"></script>
-		<script src="/js/masked.js"></script>
-		<script src="/js/jquery.uniform.js"></script>
-		<script src="/js/select2.min.js"></script>
-		<script src="/js/matrix.js"></script>
-		<script src="/js/matrix.form_common.js"></script>
-		<script src="/js/wysihtml5-0.3.0.js"></script>
-		<script src="/js/jquery.peity.min.js"></script>
-		<script src="/js/bootstrap-wysihtml5.js"></script>
-		<script>
-			$('.textarea_editor').wysihtml5();
-		</script>
+			<!--end-Footer-part-->
+			<script src="/js/jquery.min.js"></script>
+			<script src="/js/jquery.ui.custom.js"></script>
+			<script src="/js/bootstrap.min.js"></script>
+			<script src="/js/jquery.uniform.js"></script>
+			<script src="/js/select2.min.js"></script>
+			<script src="/js/jquery.dataTables.min.js"></script>
+			<script src="/js/matrix.js"></script>
+			<script src="/js/matrix.tables.js"></script>
 	</body>
 
 </html>

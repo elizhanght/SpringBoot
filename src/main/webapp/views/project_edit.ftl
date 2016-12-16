@@ -98,9 +98,9 @@
 			<div id="content-header">
 				<div id="breadcrumb">
 					<a href="/login/home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-					<a href="#" class="current">添加项目</a>
+					<a href="#" class="current">编辑项目</a>
 				</div>
-				<h1>创建项目</h1>
+				<h1>编辑项目</h1>
 			</div>
 			<div class="container-fluid">
 				<hr>
@@ -114,13 +114,13 @@
 									<div class="control-group">
 										<label class="control-label">项目名称 :</label>
 										<div class="controls">
-											<input type="text" class="span11" placeholder="项目名称" name="project_name" />
+											<input type="text" class="span11" placeholder="项目名称" name="project_name" value="${project.project_name}" />
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label">项目描述 :</label>
 										<div class="controls">
-											<input type="text" class="span11" placeholder="项目描述" name="project_desc" />
+											<input type="text" class="span11" placeholder="项目描述" name="project_desc" value="${project.project_desc}" />
 										</div>
 									</div>
 									<div class="form-actions">

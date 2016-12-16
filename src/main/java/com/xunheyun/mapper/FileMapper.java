@@ -15,6 +15,6 @@ public interface FileMapper {
 	@Select("select * from xhy_file where project_id=#{project_id}")
 	public List<File> list(@Param("project_id") int project_id);
 	
-	@Insert("insert into xhy_file (file_name,project_id) values (#{file_name},#{project_id})")
+	@Insert("insert into xhy_file (file_name,project_id,file_desc) values (#{file_name},#{project_id},#{file_desc})")
 	public int insertFile(File file);
 }

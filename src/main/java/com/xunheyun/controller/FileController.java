@@ -54,7 +54,7 @@ public class FileController {
 		
 		request.setAttribute("project_id", file.getProject_id());
 		
-		return "/file/list";
+		return "/file/list?project_id="+file.getProject_id();
 	}
 }
 

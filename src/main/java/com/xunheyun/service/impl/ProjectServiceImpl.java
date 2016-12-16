@@ -31,4 +31,26 @@ public class ProjectServiceImpl implements IProjectService {
 		return list;
 	}
 
+	@Override
+	public int deleteProject(int project_id) {
+		
+		projectMapper.deleteProject(project_id);
+		
+		return 0;
+	}
+
+	@Override
+	public Project getProject(int project_id) {
+		
+		Project project = projectMapper.getProject(project_id);
+		
+		return project;
+	}
+
+	@Override
+	public int updateProject(Project project) {
+		projectMapper.updateProject(project);
+		return 0;
+	}
+
 }

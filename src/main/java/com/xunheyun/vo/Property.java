@@ -6,6 +6,7 @@ public class Property {
 	private String pro_key;
 	private String pro_value;
 	private int file_id;
+	
 	public int getKeyvalue_id() {
 		return keyvalue_id;
 	}

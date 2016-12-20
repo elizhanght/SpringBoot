@@ -2,6 +2,8 @@
  */
 package com.xunheyun.vo;
 
+import java.sql.Timestamp;
+
 /**
  * @author eli.zhang
  */
@@ -11,6 +13,7 @@ public class File {
 	private String file_name;
 	private int project_id;
 	private String file_desc;
+	private Timestamp timestamp;
 	
 	
 	public String getFile_name() {
@@ -37,6 +40,13 @@ public class File {
 	public void setFile_desc(String file_desc) {
 		this.file_desc = file_desc;
 	}
+	public Timestamp getTimestamp() {
+		return timestamp;
+	}
+	public void setTimestamp(Timestamp timestamp) {
+		this.timestamp = timestamp;
+	}
 	
 	
 }
+

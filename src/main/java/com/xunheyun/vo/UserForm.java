@@ -2,6 +2,7 @@ package com.xunheyun.vo;
 
 public class UserForm {
 
+	private int user_id;
 	private String user_name;
 	private String pass_word;
 	
@@ -17,5 +18,12 @@ public class UserForm {
 	public void setPass_word(String pass_word) {
 		this.pass_word = pass_word;
 	}
+	public int getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
 	
 }
+

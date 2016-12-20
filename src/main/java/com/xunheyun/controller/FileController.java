@@ -1,5 +1,4 @@
 /**
- * 文件管理中心
  */
 package com.xunheyun.controller;
 
@@ -55,24 +54,42 @@ public class FileController {
 		
 		request.setAttribute("project_id", file.getProject_id());
 		
-		return "/file/list?project_id="+file.getProject_id();
+		return "redirect:/file/list?project_id="+file.getProject_id();
 	}
+	
+	@RequestMapping(value="/delete")
+	public String deleteFile(HttpServletRequest request){
+		
+		int fileId = Integer.valueOf(request.getParameter("file_id"));
+		int projectId = Integer.valueOf(request.getParameter("project_id"));
+		
+		fileService.deleteFile(fileId);
+		
+		return "redirect:/file/list?project_id="+projectId;
+	}
+	
+	@RequestMapping(value="/editpage")
+	public String editPage(HttpServletRequest request){
+		
+		int fileId = Integer.valueOf(request.getParameter("file_id"));
+		int projectId = Integer.valueOf(request.getParameter("project_id"));
+		
+		File file = fileService.getFileById(fileId);
+		
+		request.setAttribute("file", file);
+		request.setAttribute("project_id", projectId);
+		
+		return "file_edit";
+	}
+	@RequestMapping(value="/edit")
+	public String edit(HttpServletRequest request,@ModelAttribute("form") File file){
+		
+		int projectId = Integer.valueOf(request.getParameter("project_id"));
+		
+		fileService.updateFile(file);
+		
+		return "redirect:/file/list?project_id="+projectId;
+	}
+	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

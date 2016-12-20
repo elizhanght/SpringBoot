@@ -9,12 +9,13 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.xunheyun.vo.File;
 import com.xunheyun.vo.Project;
 
 @Mapper
 public interface ProjectMapper {
 
-	@Insert("insert into xhy_project(project_name,project_desc,user_id) values (#{project_name},#{project_desc},#{user_id})")
+	@Insert("insert into xhy_project(project_name,project_desc,user_id,timestamp) values (#{project_name},#{project_desc},#{user_id},#{timestamp})")
 	public int insertProject(Project project);
 	
 	@Select("select * from xhy_project where user_id=#{user_id}")
@@ -28,4 +29,8 @@ public interface ProjectMapper {
 	
 	@Select("select * from xhy_project where project_id=#{project_id}")
 	public Project getProject(int project_id);
+	
+	@Select("select * from xhy_file where project_id=#{project_id}")
+	public List<File> getFileByProjectId(@Param("project_id") int project_id);
 }
+

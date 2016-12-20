@@ -1,12 +1,14 @@
 package com.xunheyun.service;
 
-import java.util.Map;
 
 import org.springframework.stereotype.Service;
+
+import com.xunheyun.vo.UserForm;
 
 
 @Service
 public interface IUserService {
 
-	public Map<String, Object> login(String userName,String password);
+	public UserForm login(String userName,String password);
 }
+

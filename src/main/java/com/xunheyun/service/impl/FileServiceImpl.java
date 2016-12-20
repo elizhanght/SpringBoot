@@ -1,5 +1,6 @@
 package com.xunheyun.service.impl;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,35 @@ public class FileServiceImpl implements IFileService {
 	@Override
 	public int insertFile(File file) {
 		
+		file.setTimestamp(new Timestamp(System.currentTimeMillis()));
 		fileMapper.insertFile(file);
+		
+		return 0;
+	}
+
+	@Override
+	public int deleteFile(int file_id) {
+		
+		fileMapper.deleteFile(file_id);
+		
+		return 0;
+	}
+
+	@Override
+	public File getFileById(int file_id) {
+		
+		File file = fileMapper.getFileById(file_id);
+		
+		return file;
+	}
+
+	@Override
+	public int updateFile(File file) {
+		
+		fileMapper.updateFile(file);
+		
 		return 0;
 	}
 
 }
+

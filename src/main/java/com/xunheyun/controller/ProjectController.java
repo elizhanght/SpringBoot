@@ -1,8 +1,10 @@
 package com.xunheyun.controller;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,11 +23,10 @@ public class ProjectController {
 	private IProjectService projectService;
 	
 	@RequestMapping(value="/list")
-	public String projectList(HttpServletRequest request){
+	public String projectList(HttpServletRequest request,HttpServletResponse response){
 		
-//		int userId = Integer.valueOf(request.getParameter("userId"));
-		
-		List<Project> list = projectService.list(0);
+		UserForm user = (UserForm) request.getSession().getAttribute("user");
+		List<Project> list = projectService.list(user.getUser_id());
 		request.setAttribute("projects", list);
 		
 		return "project_list";
@@ -38,14 +39,14 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value="/add")
-	public String projectAdd(HttpServletRequest request,@ModelAttribute("form") Project project){
+	public String projectAdd(HttpServletRequest request,HttpServletResponse response,@ModelAttribute("form") Project project){
+		
+		UserForm user = (UserForm) request.getSession().getAttribute("user");
+		project.setUser_id(user.getUser_id());
 		
 		projectService.addProject(project);
 		
-		List<Project> list = projectService.list(0);
-		request.setAttribute("projects", list);
-		
-		return "project_list";
+		return "redirect:/project/list";
 	}
 	
 	@RequestMapping(value="/delete")
@@ -55,11 +56,7 @@ public class ProjectController {
 		
 		projectService.deleteProject(project_id);
 		
-		List<Project> list = projectService.list(0);
-		
-		request.setAttribute("projects", list);
-		
-		return "project_list";
+		return "redirect:/project/list";
 	}
 	
 	@RequestMapping(value="/editpage")
@@ -82,6 +79,8 @@ public class ProjectController {
 		List<Project> list = projectService.list(0);
 		request.setAttribute("projects", list);
 		
-		return "project_list";
+		return "redirect:/project/list";
 	}
+	
 }
+

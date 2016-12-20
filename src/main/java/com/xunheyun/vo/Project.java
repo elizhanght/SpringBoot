@@ -3,6 +3,8 @@
  */
 package com.xunheyun.vo;
 
+import java.sql.Timestamp;
+
 /**
  * @author eli.zhang
  */
@@ -12,6 +14,7 @@ public class Project {
 	private String project_name;
 	private String project_desc;
 	private int user_id;
+	private Timestamp timestamp;
 	
 	
 	public String getProject_name() {
@@ -38,6 +41,13 @@ public class Project {
 	public void setProject_id(int project_id) {
 		this.project_id = project_id;
 	}
+	public Timestamp getTimestamp() {
+		return timestamp;
+	}
+	public void setTimestamp(Timestamp timestamp) {
+		this.timestamp = timestamp;
+	}
 	
 	
 }
+

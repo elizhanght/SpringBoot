@@ -43,4 +43,29 @@ public class PropertyServiceImpl implements IPropertyService {
 		return insertProperty;
 	}
 
+	@Override
+	public int updateProperty(Property property) {
+		// TODO Auto-generated method stub
+		
+		propertyMapper.updateProperty(property);
+		
+		return 0;
+	}
+
+	@Override
+	public Property getPropertyById(int keyvalue_id) {
+		// TODO Auto-generated method stub
+		
+		Property property = propertyMapper.getPropertyById(keyvalue_id);
+		
+		return property;
+	}
+
+	@Override
+	public int delete(int keyvalue_id) {
+		// TODO Auto-generated method stub
+		propertyMapper.delete(keyvalue_id);
+		return 0;
+	}
+
 }

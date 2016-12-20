@@ -1,12 +1,15 @@
 package com.xunheyun.service.impl;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.xunheyun.mapper.FileMapper;
 import com.xunheyun.mapper.ProjectMapper;
 import com.xunheyun.service.IProjectService;
+import com.xunheyun.vo.File;
 import com.xunheyun.vo.Project;
 
 @Service
@@ -18,6 +21,7 @@ public class ProjectServiceImpl implements IProjectService {
 	@Override
 	public String addProject(Project project) {
 		
+		project.setTimestamp(new Timestamp(System.currentTimeMillis()));
 		projectMapper.insertProject(project);
 		
 		return null;
@@ -34,7 +38,12 @@ public class ProjectServiceImpl implements IProjectService {
 	@Override
 	public int deleteProject(int project_id) {
 		
-		projectMapper.deleteProject(project_id);
+		// 删除项目时验证项目下是否有配置文件
+		List<File> fileList = projectMapper.getFileByProjectId(project_id);
+		
+		if (fileList == null || fileList.isEmpty()) {
+			projectMapper.deleteProject(project_id);
+		}
 		
 		return 0;
 	}
@@ -54,3 +63,4 @@ public class ProjectServiceImpl implements IProjectService {
 	}
 
 }
+

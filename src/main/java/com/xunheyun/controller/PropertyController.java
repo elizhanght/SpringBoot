@@ -43,8 +43,10 @@ public class PropertyController {
 	public String addPage(HttpServletRequest request){
 		
 		int file_id = Integer.valueOf(request.getParameter("file_id"));
+		int project_id = Integer.valueOf(request.getParameter("project_id"));
 		
 		request.setAttribute("file_id", file_id);
+		request.setAttribute("project_id", project_id);
 		
 		return "/property_add";
 	}
@@ -54,11 +56,43 @@ public class PropertyController {
 		
 		propertyService.addProperty(property);
 		
-		List<Property> list = propertyService.list(property.getFile_id());
+		int project_id = Integer.valueOf(request.getParameter("project_id"));
 		
-		request.setAttribute("properties", list);
-		request.setAttribute("file_id", property.getFile_id());
+		return "redirect:/property/list?file_id="+property.getFile_id()+"&project_id="+project_id;
+	}
+	
+	@RequestMapping(value="/editpage")
+	public String editpage(HttpServletRequest request){
 		
-		return "/property/list";
+		int keyvalue_id = Integer.valueOf(request.getParameter("keyvalue_id"));
+		int project_id = Integer.valueOf(request.getParameter("project_id"));
+		
+		Property property = propertyService.getPropertyById(keyvalue_id);
+		
+		request.setAttribute("project_id", project_id);
+		request.setAttribute("property", property);
+		
+		return "property_edit";
+	}
+	
+	@RequestMapping(value="/edit")
+	public String edit(HttpServletRequest request,@ModelAttribute("form") Property property){
+		
+		int project_id = Integer.valueOf(request.getParameter("project_id"));
+		propertyService.updateProperty(property);
+		
+		return "redirect:/property/list?file_id="+property.getFile_id()+"&project_id="+project_id;
+	}
+	
+	@RequestMapping(value="/delete")
+	public String delete(HttpServletRequest request){
+		
+		int keyvalue_id = Integer.valueOf(request.getParameter("keyvalue_id"));
+		int project_id = Integer.valueOf(request.getParameter("project_id"));
+		int file_id = Integer.valueOf(request.getParameter("file_id"));
+		
+		propertyService.delete(keyvalue_id);
+		
+		return "redirect:/property/list?file_id="+file_id+"&project_id="+project_id;
 	}
 }

@@ -1,5 +1,4 @@
 /**
- * 
  */
 package com.xunheyun.service.impl;
 
@@ -23,6 +22,7 @@ public class CacheServiceImpl implements ICacheService {
 	
 	@Resource(name="redisTemplate") 
 	private HashOperations<String, String, Object> hashOps;
+	
 	
 	@Override
 	public void saveProject(String project, String filename, List<Property> properties) {

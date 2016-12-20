@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.xunheyun.mapper.FileMapper;
 import com.xunheyun.mapper.PropertyMapper;
@@ -20,6 +21,7 @@ import com.xunheyun.vo.Property;
  * @author eli.zhang
  * @since 1.0
  */
+@Service
 public class FileManageServiceImpl implements IFileManageService {
 
 	private Logger logger = Logger.getLogger(getClass());

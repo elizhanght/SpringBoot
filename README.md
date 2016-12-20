@@ -11,7 +11,11 @@
 #如何使用
   1. 添加 client 依赖的 JAR 包
   ~~~
-    
+    <dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>6.0.5</version>
+    </dependency>
   ~~~
   2. 引入资源
   ~~~

@@ -26,7 +26,7 @@
 		<div id="user-nav" class="navbar navbar-inverse">
 			<ul class="nav">
 				<li class="dropdown" id="profile-messages">
-					<a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i> <span class="text">Welcome User</span><b class="caret"></b></a>
+					<a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i> <span class="text">${user.user_name}</span><b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li>
 							<a href="#"><i class="icon-user"></i> My Profile</a>
@@ -37,7 +37,7 @@
 						</li>
 						<li class="divider"></li>
 						<li>
-							<a href="login.html"><i class="icon-key"></i> Log Out</a>
+							<a href="/login/logout"><i class="icon-key"></i> Log Out</a>
 						</li>
 					</ul>
 				</li>
@@ -65,7 +65,7 @@
 					<a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a>
 				</li>
 				<li class="">
-					<a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a>
+					<a title="" href="/login/logout"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a>
 				</li>
 			</ul>
 		</div>
@@ -90,7 +90,7 @@
 		<div id="content">
 			<div id="content-header">
 				<div id="breadcrumb">
-					<a href="/login/home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+					<a href="/login/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
 					<a href="/project/list" title="Go to Home" class="tip-bottom"> 项目列表</a>
 					<a href="#" class="current">文件列表</a>
 				</div>
@@ -119,11 +119,11 @@
 										<#list files as file >
 											<tr class="odd gradeX">
 												<td>${file.file_name}</td>
-												<td>${file.file_name}</td>
+												<td>${file.timestamp}</td>
 												<td>${file.file_desc}</td>
 												<td>
-													<a class="btn btn-success btn-mini" href="/project/editpage">编辑</a>
-													<a class="btn btn-danger  btn-mini" href="/project/delete">删除</a>
+													<a class="btn btn-success btn-mini" href="/file/editpage?file_id=${file.file_id}&project_id=#{project_id}">编辑</a>
+													<a class="btn btn-danger  btn-mini" href="/file/delete?file_id=${file.file_id}&project_id=${project_id}">删除</a>
 													<a class="btn btn-success  btn-mini" href="/property/list?file_id=${file.file_id}&project_id=${project_id}">属性列表</a>
 												</td>
 											</tr>

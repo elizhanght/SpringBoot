@@ -17,12 +17,15 @@
 		<link href="/font-awesome/css/font-awesome.css" rel="stylesheet" />
 		<!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>-->
 	</head>
+
 	<body>
+
 		<!--Header-part-->
 		<div id="header">
 			<h1><a href="dashboard.html">Matrix Admin</a></h1>
 		</div>
 		<!--close-Header-part-->
+
 		<!--top-Header-menu-->
 		<div id="user-nav" class="navbar navbar-inverse">
 			<ul class="nav">
@@ -38,7 +41,7 @@
 						</li>
 						<li class="divider"></li>
 						<li>
-							<a href="login.html"><i class="icon-key"></i> Log Out</a>
+							<a href="/login/logout"><i class="icon-key"></i> Log Out</a>
 						</li>
 					</ul>
 				</li>
@@ -70,29 +73,34 @@
 				</li>
 			</ul>
 		</div>
+
 		<!--start-top-serch-->
 		<div id="search">
 			<input type="text" placeholder="Search here..." />
 			<button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
 		</div>
 		<!--close-top-serch-->
+
 		<!--sidebar-menu-->
+
 		<div id="sidebar">
 			<a href="#" class="visible-phone"><i class="icon icon-list"></i>Forms</a>
 			<ul>
 				<li class="active">
-					<a href="i#"><i class="icon icon-home"></i> <span>项目管理</span></a>
+					<a href="/project/list"><i class="icon icon-home"></i> <span>项目管理</span></a>
 				</li>
 			</ul>
 		</div>
+
 		<!--close-left-menu-stats-sidebar-->
+
 		<div id="content">
 			<div id="content-header">
 				<div id="breadcrumb">
 					<a href="/login/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-					<a href="#" class="current">添加属性</a>
+					<a href="#" class="current">修改文件</a>
 				</div>
-				<h1>添加属性</h1>
+				<h1>修改文件</h1>
 			</div>
 			<div class="container-fluid">
 				<hr>
@@ -102,23 +110,23 @@
 							<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
 							</div>
 							<div class="widget-content nopadding">
-								<form action="/property/add?project_id=#{project_id}" method="post" class="form-horizontal">
+								<form action="/file/edit?project_id=#{project_id}" method="post" class="form-horizontal">
 									<div class="control-group">
-										<label class="control-label">属性名称 :</label>
+										<label class="control-label">文件名称 :</label>
 										<div class="controls">
-											<input type="text" class="span11" placeholder="属性key" name="pro_key" />
+											<input type="text" class="span11" name="file_name" value="${file.file_name}" />
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label">属性值 :</label>
+										<label class="control-label">文件描述 :</label>
 										<div class="controls">
-											<input type="text" class="span11" placeholder="属性值" name="pro_value" />
+											<input type="text" class="span11" name="file_desc" value="${file.file_desc}" />
 										</div>
 									</div>
-									<div class="control-group" style="display: none;">
+									<div class="control-group" style="display:none;">
 										<label class="control-label">文件ID :</label>
 										<div class="controls">
-											<input type="text" class="span11" placeholder="Last name" name="file_id" value="${file_id}" />
+											<input type="text" class="span11" value="${file.file_id}" name="file_id" />
 										</div>
 									</div>
 									<div class="form-actions">

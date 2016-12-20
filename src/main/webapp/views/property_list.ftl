@@ -26,7 +26,7 @@
 		<div id="user-nav" class="navbar navbar-inverse">
 			<ul class="nav">
 				<li class="dropdown" id="profile-messages">
-					<a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i> <span class="text">Welcome User</span><b class="caret"></b></a>
+					<a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i> <span class="text">${user.user_name}</span><b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li>
 							<a href="#"><i class="icon-user"></i> My Profile</a>
@@ -65,7 +65,7 @@
 					<a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a>
 				</li>
 				<li class="">
-					<a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a>
+					<a title="" href="/login/logout"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a>
 				</li>
 			</ul>
 		</div>
@@ -90,7 +90,7 @@
 		<div id="content">
 			<div id="content-header">
 				<div id="breadcrumb">
-					<a href="/login/home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+					<a href="/login/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
 					<a href="/project/list" title="Go to Home" > 项目列表</a>
 					<a href="/file/list?project_id=${project_id}" >文件列表</a>
 					<a href="#" class="current">属性列表</a>
@@ -99,7 +99,7 @@
 			</div>
 			<div class="container-fluid">
 				<hr>
-				<a class="btn btn-success" href="/property/addpage?file_id=${file_id}">添加属性</a>
+				<a class="btn btn-success" href="/property/addpage?file_id=${file_id}&project_id=#{project_id}">添加属性</a>
 				<div class="row-fluid">
 					<div class="span12">
 						<div class="widget-box">
@@ -121,8 +121,8 @@
 												<td>${property.pro_key}</td>
 												<td>${property.pro_value}</td>
 												<td>
-													<a class="btn btn-success btn-mini" href="/project/editpage">编辑</a>
-													<a class="btn btn-danger  btn-mini" href="/project/delete">删除</a>
+													<a class="btn btn-success btn-mini" href="/property/editpage?keyvalue_id=#{property.keyvalue_id}&project_id=#{project_id}">编辑</a>
+													<a class="btn btn-danger  btn-mini" href="/property/delete?project_id=${project_id}&file_id=${property.file_id}&keyvalue_id=${property.keyvalue_id}">删除</a>
 												</td>
 											</tr>
 										</#list>

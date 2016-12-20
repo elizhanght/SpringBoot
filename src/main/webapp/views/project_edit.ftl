@@ -30,7 +30,7 @@
 		<div id="user-nav" class="navbar navbar-inverse">
 			<ul class="nav">
 				<li class="dropdown" id="profile-messages">
-					<a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i> <span class="text">Welcome User</span><b class="caret"></b></a>
+					<a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i> <span class="text">${user.user_name}</span><b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li>
 							<a href="#"><i class="icon-user"></i> My Profile</a>
@@ -41,7 +41,7 @@
 						</li>
 						<li class="divider"></li>
 						<li>
-							<a href="login.html"><i class="icon-key"></i> Log Out</a>
+							<a href="/login/logout"><i class="icon-key"></i> Log Out</a>
 						</li>
 					</ul>
 				</li>
@@ -69,7 +69,7 @@
 					<a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a>
 				</li>
 				<li class="">
-					<a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a>
+					<a title="" href="/login/logout"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a>
 				</li>
 			</ul>
 		</div>
@@ -97,7 +97,7 @@
 		<div id="content">
 			<div id="content-header">
 				<div id="breadcrumb">
-					<a href="/login/home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+					<a href="/login/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
 					<a href="#" class="current">编辑项目</a>
 				</div>
 				<h1>编辑项目</h1>
@@ -110,7 +110,7 @@
 							<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
 							</div>
 							<div class="widget-content nopadding">
-								<form action="/project/add" method="post" class="form-horizontal">
+								<form action="/project/edit" method="post" class="form-horizontal">
 									<div class="control-group">
 										<label class="control-label">项目名称 :</label>
 										<div class="controls">
@@ -121,6 +121,12 @@
 										<label class="control-label">项目描述 :</label>
 										<div class="controls">
 											<input type="text" class="span11" placeholder="项目描述" name="project_desc" value="${project.project_desc}" />
+										</div>
+									</div>
+									<div class="control-group" style="display: none;" >
+										<label class="control-label">项目ID :</label>
+										<div class="controls">
+											<input type="text" class="span11" placeholder="项目描述" name="project_id" value="${project.project_id}" />
 										</div>
 									</div>
 									<div class="form-actions">

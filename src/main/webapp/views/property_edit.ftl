@@ -38,7 +38,7 @@
 						</li>
 						<li class="divider"></li>
 						<li>
-							<a href="login.html"><i class="icon-key"></i> Log Out</a>
+							<a href="/login/logout"><i class="icon-key"></i> Log Out</a>
 						</li>
 					</ul>
 				</li>
@@ -66,7 +66,7 @@
 					<a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a>
 				</li>
 				<li class="">
-					<a title="" href="/login/logout"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a>
+					<a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a>
 				</li>
 			</ul>
 		</div>
@@ -90,9 +90,9 @@
 			<div id="content-header">
 				<div id="breadcrumb">
 					<a href="/login/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-					<a href="#" class="current">添加属性</a>
+					<a href="#" class="current">修改属性</a>
 				</div>
-				<h1>添加属性</h1>
+				<h1>修改属性</h1>
 			</div>
 			<div class="container-fluid">
 				<hr>
@@ -102,23 +102,29 @@
 							<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
 							</div>
 							<div class="widget-content nopadding">
-								<form action="/property/add?project_id=#{project_id}" method="post" class="form-horizontal">
+								<form action="/property/edit?project_id=#{project_id}" method="post" class="form-horizontal">
 									<div class="control-group">
 										<label class="control-label">属性名称 :</label>
 										<div class="controls">
-											<input type="text" class="span11" placeholder="属性key" name="pro_key" />
+											<input type="text" class="span11" name="pro_key" value="${property.pro_key}" />
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label">属性值 :</label>
 										<div class="controls">
-											<input type="text" class="span11" placeholder="属性值" name="pro_value" />
+											<input type="text" class="span11" name="pro_value" value="${property.pro_value}" />
+										</div>
+									</div>
+									<div class="control-group" style="display: none;">
+										<label class="control-label">属性ID :</label>
+										<div class="controls">
+											<input type="text" class="span11" name="keyvalue_id" value="${property.keyvalue_id}" />
 										</div>
 									</div>
 									<div class="control-group" style="display: none;">
 										<label class="control-label">文件ID :</label>
 										<div class="controls">
-											<input type="text" class="span11" placeholder="Last name" name="file_id" value="${file_id}" />
+											<input type="text" class="span11" name="file_id" value="${property.file_id}" />
 										</div>
 									</div>
 									<div class="form-actions">

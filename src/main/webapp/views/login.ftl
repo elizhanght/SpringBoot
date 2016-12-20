@@ -13,7 +13,7 @@
     </head>
     <body>
         <div id="loginbox">            
-            <form id="loginform" class="form-vertical" action="/login/home">
+            <form id="loginform" method="POST" class="form-vertical" action="/login/home">
 				 <div class="control-group normal_text"> <h3><img src="/img/logo.png" alt="用户登录" /></h3></div>
                 <div class="control-group">
                     <div class="controls">

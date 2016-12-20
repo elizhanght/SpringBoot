@@ -19,7 +19,7 @@
   ~~~
   2. 引入资源
   ~~~
-    @PropertySource(value ="classpath:config.properties",factory=})
+    @PropertySource(value ="classpath:config.properties",factory=HttpDisPropertyPlaceholer.class})
   ~~~
   
   3. 使用资源

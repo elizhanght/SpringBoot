@@ -90,7 +90,6 @@
 			</div>
 			<div class="container-fluid">
 				<hr>
-				<a class="btn btn-success" href="/project/addpage">添加项目</a>
 				<div class="row-fluid">
 					<div class="span12">
 						<div class="widget-box">
@@ -104,14 +103,42 @@
 											<th>项目名称</th>
 											<th>创建时间</th>
 											<th>项目描述</th>
+											<th style="width: 200px;">操作</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr class="odd gradeX">
-											<td>Trident</td>
-											<td>Internet Explorer 4.0</td>
-											<td>Win 95+</td>
+										<#list projects as project >
+											<tr class="odd gradeX">
+												<td>${project.project_name}</td>
+												<td>${project.timestamp}</td>
+												<td>${project.project_desc}</td>
+											</tr>
+										</#list>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="widget-box">
+							<div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
+								<h5>文件列表</h5>
+							</div>
+							<div class="widget-content nopadding">
+								<table class="table table-bordered table-striped">
+									<thead>
+										<tr>
+											<th>项目名称</th>
+											<th>创建时间</th>
+											<th>项目描述</th>
 										</tr>
+									</thead>
+									<tbody>
+										<#list files as file >
+											<tr class="odd gradeX">
+												<td>${file.file_name}</td>
+												<td>${file.timestamp}</td>
+												<td>${file.file_desc}</td>
+											</tr>
+										</#list>
 									</tbody>
 								</table>
 							</div>

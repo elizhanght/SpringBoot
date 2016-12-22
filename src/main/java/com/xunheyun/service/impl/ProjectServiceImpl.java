@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.xunheyun.mapper.FileMapper;
 import com.xunheyun.mapper.ProjectMapper;
 import com.xunheyun.service.IProjectService;
 import com.xunheyun.vo.File;
@@ -21,10 +20,16 @@ public class ProjectServiceImpl implements IProjectService {
 	@Override
 	public String addProject(Project project) {
 		
-		project.setTimestamp(new Timestamp(System.currentTimeMillis()));
-		projectMapper.insertProject(project);
+		Project oldProject = projectMapper.getProjectByName(project.getProject_name());
 		
-		return null;
+		if (oldProject != null) {
+			return "The project already exists!";
+		}else{
+			project.setTimestamp(new Timestamp(System.currentTimeMillis()));
+			projectMapper.insertProject(project);
+		}
+		
+		return "success";
 	}
 
 	@Override

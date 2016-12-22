@@ -3,12 +3,17 @@
 package com.xunheyun.controller.api;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.xunheyun.service.IPropertyApiService;
+import com.xunheyun.vo.Property;
 
 /**
  * @author eli.zhang
@@ -16,6 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value="/api/property")
 public class PropertyApiController {
+	
+	@Autowired
+	private IPropertyApiService propertyApiService;
 	
 	/**
 	 * 根据项目和文件名称获取配置属性
@@ -28,11 +36,13 @@ public class PropertyApiController {
 	public Map<String, Object> getProperty(@PathVariable("project") String project,@PathVariable("filename") String filename){
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("spring.datasource", "1");
-		map.put("jdbc.driverClass", "com.mysql.jdbc.Driver");
-		map.put("jdbc.url", "jdbc:mysql://119.254.209.185:3306/xunheyun_device?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true");
-		map.put("jdbc.username", "root");
-//		map.put("jdbc.password", "Xhynb123.net");
+		
+		List<Property> propertyList = propertyApiService.getPropertyByProjectAndFile(project, filename);
+		
+		for (Property property : propertyList) {
+			
+			map.put(property.getPro_key(), property.getPro_value());
+		}
 		
 		return map;
 	}

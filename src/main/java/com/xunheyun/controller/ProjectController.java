@@ -1,6 +1,5 @@
 package com.xunheyun.controller;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,6 +34,7 @@ public class ProjectController {
 	@RequestMapping(value="/addpage")
 	public String projectAddPage(HttpServletRequest request){
 		
+		request.setAttribute("fail", "");
 		return "project_add";
 	}
 	
@@ -44,9 +44,15 @@ public class ProjectController {
 		UserForm user = (UserForm) request.getSession().getAttribute("user");
 		project.setUser_id(user.getUser_id());
 		
-		projectService.addProject(project);
+		String result = projectService.addProject(project);
 		
-		return "redirect:/project/list";
+		if (result.equals("success")) {
+			return "redirect:/project/list";
+		}else{
+			
+			request.setAttribute("fail", result);
+			return "project_add";
+		}
 	}
 	
 	@RequestMapping(value="/delete")

@@ -28,5 +28,8 @@ public interface FileMapper {
 	
 	@Update("update xhy_file set file_name=#{file_name},file_desc=#{file_desc} where file_id=#{file_id}")
 	public int updateFile(File file);
+	
+	@Select("select * from xhy_file where project_id=#{project_id} and file_name=#{file_name}")
+	public File getFileByProjectIdAndFileName(@Param("project_id") int project_id,@Param("file_name") String file_name);
 }
 

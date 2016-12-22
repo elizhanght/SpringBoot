@@ -32,5 +32,8 @@ public interface ProjectMapper {
 	
 	@Select("select * from xhy_file where project_id=#{project_id}")
 	public List<File> getFileByProjectId(@Param("project_id") int project_id);
+	
+	@Select("select * from xhy_project where project_name=#{project_name}")
+	public Project getProjectByName(@Param("project_name") String project_name);
 }
 

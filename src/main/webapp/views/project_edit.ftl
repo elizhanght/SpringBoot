@@ -87,7 +87,7 @@
 			<a href="#" class="visible-phone"><i class="icon icon-list"></i>Forms</a>
 			<ul>
 				<li class="active">
-					<a href="i#"><i class="icon icon-home"></i> <span>项目管理</span></a>
+					<a href="/project/list"><i class="icon icon-home"></i> <span>项目管理</span></a>
 				</li>
 			</ul>
 		</div>

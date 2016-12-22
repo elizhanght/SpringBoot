@@ -29,6 +29,10 @@ public class PropertyApiController {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("spring.datasource", "1");
+		map.put("jdbc.driverClass", "com.mysql.jdbc.Driver");
+		map.put("jdbc.url", "jdbc:mysql://119.254.209.185:3306/xunheyun_device?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true");
+		map.put("jdbc.username", "root");
+//		map.put("jdbc.password", "Xhynb123.net");
 		
 		return map;
 	}

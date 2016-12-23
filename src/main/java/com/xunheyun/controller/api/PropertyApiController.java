@@ -9,11 +9,15 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.xunheyun.service.IPropertyApiService;
+import com.xunheyun.service.IUserService;
 import com.xunheyun.vo.Property;
+import com.xunheyun.vo.UserForm;
 
 /**
  * @author eli.zhang
@@ -25,6 +29,9 @@ public class PropertyApiController {
 	@Autowired
 	private IPropertyApiService propertyApiService;
 	
+	@Autowired
+	private IUserService userService;
+	
 	/**
 	 * 根据项目和文件名称获取配置属性
 	 * @param project		-- 项目名称
@@ -33,9 +40,11 @@ public class PropertyApiController {
 	 */
 	@RequestMapping(value="/{project}/{filename}")
 	@ResponseBody
-	public Map<String, Object> getProperty(@PathVariable("project") String project,@PathVariable("filename") String filename){
+	public Map<String, Object> getProperty(@PathVariable("project") String project,@PathVariable("filename") String filename,@RequestBody String json){
 		
 		Map<String, Object> map = new HashMap<String, Object>();
+		
+		if(validateUser(json) == false)return map;
 		
 		List<Property> propertyList = propertyApiService.getPropertyByProjectAndFile(project, filename);
 		
@@ -53,9 +62,11 @@ public class PropertyApiController {
 	 */
 	@RequestMapping(value="/{project}")
 	@ResponseBody
-	public Map<String, Object> getProperty(@PathVariable("project") String project){
+	public Map<String, Object> getProperty(@PathVariable("project") String project,@RequestBody String json){
 		
 		Map<String, Object> map = new HashMap<String, Object>();
+		
+		if(validateUser(json) == false)return map;
 		
 		List<Property> propertyList = propertyApiService.getPropertyByProject(project);
 		
@@ -65,6 +76,18 @@ public class PropertyApiController {
 		}
 		
 		return map;
+	}
+	
+	private boolean validateUser(String json){
+		
+		UserForm user = JSON.parseObject(json, UserForm.class);
+		
+		UserForm login = userService.login(user.getUser_name(), user.getPass_word());
+		
+		if (login == null) {
+			return false;
+		}
+		return true;
 	}
 	
 }

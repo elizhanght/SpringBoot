@@ -8,23 +8,4 @@
     3. 添加属性文件
     4. 提供 HTTP 接口
     
-#如何使用
-  1. 添加 client 依赖的 JAR 包
-  ~~~
-    <dependency>
-    	<groupId>mysql</groupId>
-    	<artifactId>mysql-connector-java</artifactId>
-    	<version>6.0.5</version>
-    </dependency>
-  ~~~
-  2. 引入资源
-  ~~~
-    @PropertySource(value ="classpath:config.properties",factory=HttpDisPropertyPlaceholer.class})
-  ~~~
-  
-  3. 使用资源
-  ~~~
-    @Value("${rom_remote_url}")
-	  private String romRemoteUrl;
-  ~~~
-  
+ <img src="">

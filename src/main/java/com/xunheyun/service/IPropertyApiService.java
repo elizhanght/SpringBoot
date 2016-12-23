@@ -7,4 +7,6 @@ import com.xunheyun.vo.Property;
 public interface IPropertyApiService {
 
 	public List<Property> getPropertyByProjectAndFile(String project,String filename);
+	
+	public List<Property> getPropertyByProject(String project);
 }

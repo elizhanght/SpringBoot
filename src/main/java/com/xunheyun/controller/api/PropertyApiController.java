@@ -46,4 +46,25 @@ public class PropertyApiController {
 		
 		return map;
 	}
+	/**
+	 * 获取项目下面的所有文件的属性
+	 * @param project		-- 项目名称
+	 * @return
+	 */
+	@RequestMapping(value="/{project}")
+	@ResponseBody
+	public Map<String, Object> getProperty(@PathVariable("project") String project){
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		List<Property> propertyList = propertyApiService.getPropertyByProject(project);
+		
+		for (Property property : propertyList) {
+			
+			map.put(property.getPro_key(), property.getPro_value());
+		}
+		
+		return map;
+	}
+	
 }

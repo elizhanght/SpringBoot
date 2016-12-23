@@ -1,5 +1,6 @@
 package com.xunheyun.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,26 @@ public class PropertyApiServiceImpl implements IPropertyApiService {
 		List<Property> list = propertyMapper.list(file.getFile_id());
 		
 		return list;
+	}
+
+	@Override
+	public List<Property> getPropertyByProject(String project_name) {
+		
+		// 根据项目名称获取项目ID
+		Project project = projectMapper.getProjectByName(project_name);
+				
+		List<File> fileList = fileMapper.list(project.getProject_id());
+		
+		List<Property> propertyList = new ArrayList<>();
+		
+		for (File file : fileList) {
+			
+			List<Property> list = propertyMapper.list(file.getFile_id());
+			
+			propertyList.addAll(list);
+		}
+		
+		return propertyList;
 	}
 
 }

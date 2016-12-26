@@ -56,10 +56,11 @@ public class PropertyApiController {
 		return map;
 	}
 	/**
-	 * 获取项目下面的所有文件的属性
+	 * 获取项目下面的所有文件的属性,如果files对象中有值则会取到files中文件的属性，如果files为空则获取当前项目中的所有文件属性
 	 * @param project		-- 项目名称
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/{project}")
 	@ResponseBody
 	public Map<String, Object> getProperty(@PathVariable("project") String project,@RequestBody String json){
@@ -68,7 +69,10 @@ public class PropertyApiController {
 		
 		if(validateUser(json) == false)return map;
 		
-		List<Property> propertyList = propertyApiService.getPropertyByProject(project);
+		Map<String, Object> jsonMap = JSON.parseObject(json, Map.class);
+		List<String> files = (List<String>) jsonMap.get("files");
+		
+		List<Property> propertyList = propertyApiService.getPropertyByProject(project,files);
 		
 		for (Property property : propertyList) {
 			

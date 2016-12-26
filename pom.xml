@@ -3,11 +3,16 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>eli</groupId>
 	<artifactId>SpringBoot</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringBoot Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
+	<properties>  
+        <maven.compiler.source>1.7</maven.compiler.source>  
+        <maven.compiler.target>1.7</maven.compiler.target>  
+        <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>  
+    </properties>   
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>

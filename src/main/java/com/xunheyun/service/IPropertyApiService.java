@@ -8,5 +8,5 @@ public interface IPropertyApiService {
 
 	public List<Property> getPropertyByProjectAndFile(String project,String filename);
 	
-	public List<Property> getPropertyByProject(String project);
+	public List<Property> getPropertyByProject(String project,List<String> files);
 }

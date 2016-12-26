@@ -42,7 +42,7 @@ public class PropertyApiServiceImpl implements IPropertyApiService {
 	}
 
 	@Override
-	public List<Property> getPropertyByProject(String project_name) {
+	public List<Property> getPropertyByProject(String project_name,List<String> files) {
 		
 		// 根据项目名称获取项目ID
 		Project project = projectMapper.getProjectByName(project_name);
@@ -51,11 +51,27 @@ public class PropertyApiServiceImpl implements IPropertyApiService {
 		
 		List<Property> propertyList = new ArrayList<>();
 		
-		for (File file : fileList) {
+		if (files == null) {
 			
-			List<Property> list = propertyMapper.list(file.getFile_id());
+			for (File file : fileList) {
+				
+				List<Property> list = propertyMapper.list(file.getFile_id());
+				
+				propertyList.addAll(list);
+			}
 			
-			propertyList.addAll(list);
+		}else{
+			
+			for (File file : fileList) {
+				
+				if (files.contains(file.getFile_name())) {
+					
+					List<Property> list = propertyMapper.list(file.getFile_id());
+					
+					propertyList.addAll(list);
+				}
+			}
+			
 		}
 		
 		return propertyList;

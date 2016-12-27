@@ -125,9 +125,9 @@
 								<table class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											<th>项目名称</th>
+											<th>文件名称</th>
 											<th>创建时间</th>
-											<th>项目描述</th>
+											<th>文件描述</th>
 										</tr>
 									</thead>
 									<tbody>

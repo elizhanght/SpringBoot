@@ -14,11 +14,17 @@ public class UserServiceImpl implements IUserService {
 	private UserMapper userMapper;
 
 	@Override
-	public UserForm login(String userName,String password) {
+	public UserForm login(UserForm userForm) {
 		
-		UserForm user = userMapper.findUser(userName, password);
+		UserForm user = userMapper.findUser(userForm);
 		
 		return user;
+	}
+
+	@Override
+	public int register(UserForm user) {
+		
+		return userMapper.register(user);
 	}
 
 }

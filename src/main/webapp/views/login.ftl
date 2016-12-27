@@ -30,8 +30,8 @@
                     </div>
                 </div>
                 <div class="form-actions">
-                    <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">忘记密码?</a></span>
-                    <span class="pull-right"><input type="submit"  class="btn btn-success" /> </input></span>
+                    <span class="pull-left"><a href="/login/registerpage" class="flip-link btn btn-info" id="to-recover">新用户注册</a></span>
+                    <span class="pull-right"><input type="submit" value="用户登录"  class="btn btn-success" /> </input></span>
                 </div>
             </form>
             <form id="recoverform" action="#" class="form-vertical">

@@ -37,6 +37,8 @@ public class Application extends WebMvcConfigurerAdapter {
     	registry.addInterceptor(new SystemInterceptor())
     	.excludePathPatterns("/login/page")
     	.excludePathPatterns("/login/home")
+    	.excludePathPatterns("/login/registerpage")
+    	.excludePathPatterns("/login/register")
     	.addPathPatterns("/login/**")
     	.addPathPatterns("/project/**")
     	.addPathPatterns("/file/**")

@@ -5,6 +5,7 @@ public class UserForm {
 	private int user_id;
 	private String user_name;
 	private String pass_word;
+	private String email;
 	
 	public String getUser_name() {
 		return user_name;
@@ -23,6 +24,12 @@ public class UserForm {
 	}
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }

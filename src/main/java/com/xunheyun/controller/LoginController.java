@@ -73,7 +73,7 @@ public class LoginController {
 			return "redirect:/login/page";
 		}
 		
-		UserForm userForm = userService.login(user.getUser_name(),user.getPass_word());
+		UserForm userForm = userService.login(user);
 		
 		if (userForm == null) {
 			return "redirect:/login/page";
@@ -95,6 +95,22 @@ public class LoginController {
 		request.setAttribute("files", fileList);
 		
 		return "home";
+	}
+	@RequestMapping(value="/registerpage")
+	public String registerpage(@ModelAttribute("form") UserForm user){
+		
+		return "register";
+	}
+	
+	@RequestMapping(value="/register")
+	public String register(@ModelAttribute("form") UserForm user){
+		
+		userService.register(user);
+		
+		if (user.getUser_id() != 0) {
+			return "redirect:/login/page";
+		}
+		return "redirect:/login/registerpage";
 	}
 }
 

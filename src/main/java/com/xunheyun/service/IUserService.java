@@ -9,6 +9,8 @@ import com.xunheyun.vo.UserForm;
 @Service
 public interface IUserService {
 
-	public UserForm login(String userName,String password);
+	public UserForm login(UserForm user);
+	
+	public int register(UserForm user);
 }
 

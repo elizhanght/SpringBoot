@@ -86,7 +86,7 @@ public class PropertyApiController {
 		
 		UserForm user = JSON.parseObject(json, UserForm.class);
 		
-		UserForm login = userService.login(user.getUser_name(), user.getPass_word());
+		UserForm login = userService.login(user);
 		
 		if (login == null) {
 			return false;

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,8 @@ import com.xunheyun.vo.UserForm;
 @RequestMapping(value="/api/property")
 public class PropertyApiController {
 	
+	Logger logger = Logger.getLogger(getClass());
+	
 	@Autowired
 	private IPropertyApiService propertyApiService;
 	
@@ -34,9 +37,11 @@ public class PropertyApiController {
 	
 	/**
 	 * 根据项目和文件名称获取配置属性
+	 * 
 	 * @param project		-- 项目名称
 	 * @param filename		-- 文件名称
-	 * @return
+	 * 
+	 * @return Map<String, Object>
 	 */
 	@RequestMapping(value="/{project}/{filename}")
 	@ResponseBody
@@ -52,6 +57,8 @@ public class PropertyApiController {
 			
 			map.put(property.getPro_key(), property.getPro_value());
 		}
+		
+		logger.info("根据项目和文件获取属性 - " + JSON.toJSONString(map));
 		
 		return map;
 	}
@@ -79,6 +86,8 @@ public class PropertyApiController {
 			map.put(property.getPro_key(), property.getPro_value());
 		}
 		
+		logger.info("根据项目属性 - " + JSON.toJSONString(map));
+		
 		return map;
 	}
 	
@@ -89,6 +98,7 @@ public class PropertyApiController {
 		UserForm login = userService.login(user);
 		
 		if (login == null) {
+			logger.info("用户名或者密码错误 - " + json);
 			return false;
 		}
 		return true;

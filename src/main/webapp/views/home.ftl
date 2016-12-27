@@ -103,7 +103,6 @@
 											<th>项目名称</th>
 											<th>创建时间</th>
 											<th>项目描述</th>
-											<th style="width: 200px;">操作</th>
 										</tr>
 									</thead>
 									<tbody>

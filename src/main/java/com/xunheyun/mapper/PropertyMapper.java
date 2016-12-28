@@ -28,5 +28,8 @@ public interface PropertyMapper {
 	
 	@Delete("delete from xhy_keyvalue where keyvalue_id=#{keyvalue_id}")
 	public int delete(@Param("keyvalue_id") int keyvalue_id);
+	
+	@Delete("delete from xhy_keyvalue where file_id=#{file_id}")
+	public int deleteByFileId(@Param("file_id") int file_id);
 }
 

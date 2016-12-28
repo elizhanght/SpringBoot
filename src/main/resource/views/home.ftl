@@ -127,6 +127,7 @@
 										<tr>
 											<th>文件名称</th>
 											<th>创建时间</th>
+											<th>所属项目</th>
 											<th>文件描述</th>
 										</tr>
 									</thead>
@@ -135,6 +136,7 @@
 											<tr class="odd gradeX">
 												<td>${file.file_name}</td>
 												<td>${file.timestamp}</td>
+												<td>${file.project_name}</td>
 												<td>${file.file_desc}</td>
 											</tr>
 										</#list>

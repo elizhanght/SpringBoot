@@ -103,6 +103,9 @@
 						<div class="widget-box">
 							<div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
 								<h5>项目列表</h5>
+								<#if fail != "">
+									<h5 style="color:red;float:right;">${fail}</h5>
+								</#if>
 							</div>
 							<div class="widget-content nopadding">
 								<table class="table table-bordered table-striped">
@@ -122,7 +125,7 @@
 												<td>${project.project_desc}</td>
 												<td>
 													<a class="btn btn-success btn-mini" href="/project/editpage?project_id=${project.project_id}">编辑</a>
-													<a class="btn btn-danger  btn-mini" href="/project/delete?project_id=${project.project_id}">删除</a>
+													<a class="btn btn-danger  btn-mini" onclick="deleteProject(${project.project_id})">删除</a>
 													<a class="btn btn-success  btn-mini" href="/file/list?project_id=${project.project_id}">文件列表</a>
 												</td>
 											</tr>
@@ -149,6 +152,20 @@
 			<script src="/js/jquery.dataTables.min.js"></script>
 			<script src="/js/matrix.js"></script>
 			<script src="/js/matrix.tables.js"></script>
+			<script src="/layer/layer.js"></script>
+			<script type="text/javascript">
+				// 删除项目
+				function deleteProject(projectId){
+					
+					layer.msg('确定删除当前项目吗？', {
+					  time: 0 //不自动关闭
+					  ,btn: ['确定', '取消']
+					  ,yes: function(index){
+							document.location.href = "/project/delete?project_id="+projectId;					   
+					  }
+					});
+				}
+			</script>
 	</body>
 
 </html>

@@ -14,6 +14,7 @@ public class File {
 	private int project_id;
 	private String file_desc;
 	private Timestamp timestamp;
+	private String project_name;
 	
 	
 	public String getFile_name() {
@@ -45,6 +46,12 @@ public class File {
 	}
 	public void setTimestamp(Timestamp timestamp) {
 		this.timestamp = timestamp;
+	}
+	public String getProject_name() {
+		return project_name;
+	}
+	public void setProject_name(String project_name) {
+		this.project_name = project_name;
 	}
 	
 	

@@ -1,6 +1,7 @@
 package com.xunheyun.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.xunheyun.service.IProjectService;
 import com.xunheyun.vo.Project;
@@ -26,7 +29,15 @@ public class ProjectController {
 		
 		UserForm user = (UserForm) request.getSession().getAttribute("user");
 		List<Project> list = projectService.list(user.getUser_id());
+		
 		request.setAttribute("projects", list);
+		
+		Map<String,?> map = RequestContextUtils.getInputFlashMap(request);
+		if (map != null) {
+			request.setAttribute("fail", map.get("fail"));
+		}else{
+			request.setAttribute("fail", "");
+		}
 		
 		return "project_list";
 	}
@@ -56,11 +67,13 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value="/delete")
-	public String projectDelete(HttpServletRequest request){
+	public String projectDelete(HttpServletRequest request,RedirectAttributes redirectAttributes){
 		
 		int project_id = Integer.valueOf(request.getParameter("project_id"));
 		
-		projectService.deleteProject(project_id);
+		String result = projectService.deleteProject(project_id);
+		
+		redirectAttributes.addFlashAttribute("fail", result);
 		
 		return "redirect:/project/list";
 	}

@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.xunheyun.mapper.FileMapper;
+import com.xunheyun.mapper.PropertyMapper;
 import com.xunheyun.service.IFileService;
 import com.xunheyun.vo.File;
 
@@ -15,6 +17,9 @@ public class FileServiceImpl implements IFileService {
 
 	@Autowired
 	private FileMapper fileMapper;
+	
+	@Autowired
+	private PropertyMapper propertyMapper;
 	
 	@Override
 	public List<File> list(int project_id) {
@@ -34,8 +39,13 @@ public class FileServiceImpl implements IFileService {
 	}
 
 	@Override
+	@Transactional
 	public int deleteFile(int file_id) {
 		
+		// 先删除文件下面的属性值
+		propertyMapper.deleteByFileId(file_id);
+		
+		// 再删除文件
 		fileMapper.deleteFile(file_id);
 		
 		return 0;

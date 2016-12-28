@@ -41,7 +41,7 @@ public class ProjectServiceImpl implements IProjectService {
 	}
 
 	@Override
-	public int deleteProject(int project_id) {
+	public String deleteProject(int project_id) {
 		
 		// 删除项目时验证项目下是否有配置文件
 		List<File> fileList = projectMapper.getFileByProjectId(project_id);
@@ -50,7 +50,7 @@ public class ProjectServiceImpl implements IProjectService {
 			projectMapper.deleteProject(project_id);
 		}
 		
-		return 0;
+		return "项目下面有文件不可删除!";
 	}
 
 	@Override

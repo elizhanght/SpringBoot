@@ -50,6 +50,11 @@ public class LoginController {
 		List<File> fileList = new ArrayList<>();
 		for (Project project : list) {
 			List<File> list2 = fileService.list(project.getProject_id());
+			
+			for (File file : list2) {
+				file.setProject_name(project.getProject_name());
+			}
+			
 			fileList.addAll(list2);
 		}
 		request.setAttribute("files", fileList);
@@ -69,7 +74,7 @@ public class LoginController {
 	@RequestMapping(value="/home")
 	public String login(HttpServletRequest request, @ModelAttribute("form") UserForm user){
 		
-		if (user == null || user.getUser_name().equals("") || user.getPass_word().equals("")) {
+		if (user == null || user.getUser_name() == null || user.getPass_word() == null || user.getUser_name().equals("") || user.getPass_word().equals("")) {
 			return "redirect:/login/page";
 		}
 		
@@ -90,6 +95,10 @@ public class LoginController {
 		List<File> fileList = new ArrayList<>();
 		for (Project project : list) {
 			List<File> list2 = fileService.list(project.getProject_id());
+			
+			for (File file : list2) {
+				file.setProject_name(project.getProject_name());
+			}
 			fileList.addAll(list2);
 		}
 		request.setAttribute("files", fileList);

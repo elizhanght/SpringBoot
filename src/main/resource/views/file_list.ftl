@@ -123,7 +123,7 @@
 												<td>${file.file_desc}</td>
 												<td>
 													<a class="btn btn-success btn-mini" href="/file/editpage?file_id=${file.file_id}&project_id=#{project_id}">编辑</a>
-													<a class="btn btn-danger  btn-mini" href="/file/delete?file_id=${file.file_id}&project_id=${project_id}">删除</a>
+													<a class="btn btn-danger  btn-mini" onclick="deleteFile(${file.file_id},${project_id})">删除</a>
 													<a class="btn btn-success  btn-mini" href="/property/list?file_id=${file.file_id}&project_id=${project_id}">属性列表</a>
 												</td>
 											</tr>
@@ -150,6 +150,20 @@
 			<script src="/js/jquery.dataTables.min.js"></script>
 			<script src="/js/matrix.js"></script>
 			<script src="/js/matrix.tables.js"></script>
+			<script src="/layer/layer.js"></script>
+			<script type="text/javascript">
+				// 删除项目
+				function deleteFile(fileId,projectId){
+					
+					layer.msg('确定删除当前文件吗？', {
+					  time: 0 //不自动关闭
+					  ,btn: ['确定', '取消']
+					  ,yes: function(index){
+							document.location.href = "/file/delete?file_id="+fileId+"&project_id="+projectId;					   
+					  }
+					});
+				}
+			</script>
 	</body>
 
 </html>

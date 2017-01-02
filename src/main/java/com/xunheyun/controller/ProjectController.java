@@ -42,6 +42,24 @@ public class ProjectController {
 		return "project_list";
 	}
 	
+	@RequestMapping(value="/deploy_list")
+	public String deployprojectList(HttpServletRequest request,HttpServletResponse response){
+		
+		UserForm user = (UserForm) request.getSession().getAttribute("user");
+		List<Project> list = projectService.list(user.getUser_id());
+		
+		request.setAttribute("projects", list);
+		
+		Map<String,?> map = RequestContextUtils.getInputFlashMap(request);
+		if (map != null) {
+			request.setAttribute("fail", map.get("fail"));
+		}else{
+			request.setAttribute("fail", "");
+		}
+		
+		return "deploy_project_list";
+	}
+	
 	@RequestMapping(value="/addpage")
 	public String projectAddPage(HttpServletRequest request){
 		

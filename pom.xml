@@ -46,6 +46,11 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.7</version>
 		</dependency>
+<!-- 		<dependency> -->
+<!-- 		    <groupId>ch.ethz.ganymed</groupId> -->
+<!-- 		    <artifactId>ganymed-ssh2</artifactId> -->
+<!-- 		    <version>262</version> -->
+<!-- 		</dependency> -->
 	</dependencies>
 	<build>
 		<finalName>SpringBoot</finalName>

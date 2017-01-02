@@ -82,11 +82,11 @@
 		<div id="sidebar">
 			<a href="#" class="visible-phone"><i class="icon icon-th"></i>Tables</a>
 			<ul>
-				<li class="active">
+				<li>
 					<a href="/project/list"><i class="icon icon-home"></i> <span>配置管理</span></a>
 				</li>
-				<li>
-					<a href="/project/list"><i class="icon icon-home"></i> <span>部署管理</span></a>
+				<li class="active">
+					<a href="/project/deploy_list"><i class="icon icon-home"></i> <span>部署管理</span></a>
 				</li>
 			</ul>
 		</div>
@@ -95,39 +95,46 @@
 				<div id="breadcrumb">
 					<a href="/login/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
 					<a href="/project/list" title="Go to Home" class="tip-bottom"> 项目列表</a>
-					<a href="#" class="current">文件列表</a>
+					<a href="#" class="current">服务器列表</a>
 				</div>
 				<!--<h1>Tables</h1>-->
 			</div>
 			<div class="container-fluid">
 				<hr>
-				<a class="btn btn-success" href="/file/addpage?project_id=${project_id}">添加文件</a>
+				<a class="btn btn-success" href="/server/addpage?project_id=${project_id}">添加服务器</a>
+				<a href="#myModal" onclick="openPackage()" data-toggle="modal" class="btn btn-success">War包管理</a>
+				
 				<div class="row-fluid">
 					<div class="span12">
 						<div class="widget-box">
 							<div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
-								<h5>文件列表</h5>
+								<h5>服务器列表</h5>
 							</div>
 							<div class="widget-content nopadding">
 								<table class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											<th>项目名称</th>
-											<th>创建时间</th>
-											<th>项目描述</th>
-											<th style="width: 200px;">操作</th>
+											<th>服务器名称</th>
+											<th>TOMCAT目录</th>
+											<th>服务器IP</th>
+											<th>用户名</th>
+											<th>密码</th>
+											<th>描述</th>
+											<th style="width: 100px;">操作</th>
 										</tr>
 									</thead>
 									<tbody>
-										<#list files as file >
+										<#list servers as server >
 											<tr class="odd gradeX">
-												<td>${file.file_name}</td>
-												<td>${file.timestamp}</td>
-												<td>${file.file_desc}</td>
+												<td>${server.server_name}</td>
+												<td>${server.tomcat_dir}</td>
+												<td>${server.server_ip}</td>
+												<td>${server.server_user}</td>
+												<td>${server.server_pwd}</td>
+												<td>${server.server_desc}</td>
 												<td>
-													<a class="btn btn-success btn-mini" href="/file/editpage?file_id=${file.file_id}&project_id=#{project_id}">编辑</a>
-													<a class="btn btn-danger  btn-mini" onclick="deleteFile(${file.file_id},${project_id})">删除</a>
-													<a class="btn btn-success  btn-mini" href="/property/list?file_id=${file.file_id}&project_id=${project_id}">属性列表</a>
+													<a class="btn btn-success btn-mini" onclick="logServer(${server.server_id})">控制台</a>
+													<a class="btn btn-danger btn-mini" onclick="logServer(${server.server_id})">删除</a>
 												</td>
 											</tr>
 										</#list>
@@ -155,15 +162,27 @@
 			<script src="/js/matrix.tables.js"></script>
 			<script src="/layer/layer.js"></script>
 			<script type="text/javascript">
-				// 删除项目
-				function deleteFile(fileId,projectId){
-					
-					layer.msg('确定删除当前文件吗？', {
-					  time: 0 //不自动关闭
-					  ,btn: ['确定', '取消']
-					  ,yes: function(index){
-							document.location.href = "/file/delete?file_id="+fileId+"&project_id="+projectId;					   
-					  }
+				
+				function openPackage(){
+					layer.open({
+					  title:"WAR包列表",
+					  type: 2,
+					  area: ['700px', '530px'],
+					  fixed: false, //不固定
+					  maxmin: false,
+					  content: '/war/packagepage/${project_id}'
+					});
+				}
+				
+				// 日志服务
+				function logServer(server_id){
+					layer.open({
+					  title:"WAR包列表",
+					  type: 2,
+					  area: ['700px', '530px'],
+					  fixed: false, //不固定
+					  maxmin: false,
+					  content: '/server/logpage/'+server_id
 					});
 				}
 			</script>

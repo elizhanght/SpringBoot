@@ -3,10 +3,14 @@
  */
 package com.xunheyun;
 
+import javax.servlet.MultipartConfigElement;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.embedded.MultipartConfigFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -42,7 +46,17 @@ public class Application extends WebMvcConfigurerAdapter {
     	.addPathPatterns("/login/**")
     	.addPathPatterns("/project/**")
     	.addPathPatterns("/file/**")
-    	.addPathPatterns("/property/**");
+    	.addPathPatterns("/property/**")
+    	.addPathPatterns("/server/**")
+    	.addPathPatterns("/war/**");
 	}
+	
+	@Bean  
+    public MultipartConfigElement multipartConfigElement() {  
+        MultipartConfigFactory factory = new MultipartConfigFactory();  
+        factory.setMaxFileSize("50Mb");  
+        factory.setMaxRequestSize("50Mb");  
+        return factory.createMultipartConfig();  
+    }  
 
 }

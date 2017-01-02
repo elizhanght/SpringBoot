@@ -81,7 +81,10 @@
 			<a href="#" class="visible-phone"><i class="icon icon-list"></i>Forms</a>
 			<ul>
 				<li class="active">
-					<a href="/project/list"><i class="icon icon-home"></i> <span>项目管理</span></a>
+					<a href="/project/list"><i class="icon icon-home"></i> <span>配置管理</span></a>
+				</li>
+				<li>
+					<a href="/project/list"><i class="icon icon-home"></i> <span>部署管理</span></a>
 				</li>
 			</ul>
 		</div>

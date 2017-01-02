@@ -90,7 +90,7 @@
 					<a href="/project/list"><i class="icon icon-home"></i> <span>配置管理</span></a>
 				</li>
 				<li>
-					<a href="/project/list"><i class="icon icon-home"></i> <span>部署管理</span></a>
+					<a href="/project/deploy_list"><i class="icon icon-home"></i> <span>部署管理</span></a>
 				</li>
 			</ul>
 		</div>
@@ -101,9 +101,9 @@
 			<div id="content-header">
 				<div id="breadcrumb">
 					<a href="/login/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-					<a href="#" class="current">修改文件</a>
+					<a href="#" class="current">添加服务器</a>
 				</div>
-				<h1>修改文件</h1>
+				<h1>添加服务器</h1>
 			</div>
 			<div class="container-fluid">
 				<hr>
@@ -113,23 +113,47 @@
 							<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
 							</div>
 							<div class="widget-content nopadding">
-								<form action="/file/edit?project_id=#{project_id}" method="post" class="form-horizontal">
+								<form action="/server/add" method="post" class="form-horizontal">
 									<div class="control-group">
-										<label class="control-label">文件名称 :</label>
+										<label class="control-label">服务器名称 :</label>
 										<div class="controls">
-											<input type="text" class="span11" name="file_name" value="${file.file_name}" />
+											<input type="text" class="span11" name="server_name" />
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label">文件描述 :</label>
+										<label class="control-label">TOMCAT地址 :</label>
 										<div class="controls">
-											<input type="text" class="span11" name="file_desc" value="${file.file_desc}" />
+											<input type="text" class="span11" name="tomcat_dir" />
 										</div>
 									</div>
-									<div class="control-group" style="display:none;">
-										<label class="control-label">文件ID :</label>
+									<div class="control-group">
+										<label class="control-label">服务器IP :</label>
 										<div class="controls">
-											<input type="text" class="span11" value="${file.file_id}" name="file_id" />
+											<input type="text" class="span11" name="server_ip" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">用户名 :</label>
+										<div class="controls">
+											<input type="text" class="span11" value="" name="server_user" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">密码 :</label>
+										<div class="controls">
+											<input type="text" class="span11" value="" name="server_pwd" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">描述 :</label>
+										<div class="controls">
+											<input type="text" class="span11" value="" name="server_desc" />
+										</div>
+									</div>
+									<div class="control-group" style="display:none">
+										<label class="control-label"></label>
+										<div class="controls">
+											<input type="text" class="span11" value="${project_id}" name="project_id" />
 										</div>
 									</div>
 									<div class="form-actions">
